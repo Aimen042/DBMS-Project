@@ -1,0 +1,108 @@
+@import url('https://fonts.cdnfonts.com/css/uber-move-text');
+
+
+:root {
+    --btn-og-color: #f3f3f3; /* A nice blue color */
+    --btn-hover-color: #c1c1c1cb; /* A green color */
+}
+/* .roboto-regular {
+    font-family: "Roboto", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  .roboto-medium {
+    font-family: "Roboto", serif;
+    font-weight: 700;
+    font-style: normal;
+  }
+   */
+.uber-move-heading{
+       font-family: 'Uber Move Text', sans-serif;
+       font-weight:600 ;
+       font-size: 24px;
+       color: black;       
+}
+.uber-move-menu-item-heading{
+    font-family: 'Uber Move Text', sans-serif;
+    font-weight:500 ;
+    font-size: 16px;
+    color: black;       
+}
+.uber-move-menu-item-para{
+    font-family: 'Uber Move Text', sans-serif;
+    font-weight:400 ;
+    font-size: 14px;
+    color: black;       
+}
+
+
+.banner-div{
+    height: 250px;
+}
+
+.banner-img{
+    border-radius: 12px;
+    height: inherit;
+    width: 100%;
+    object-fit: cover;
+}
+
+.resturant-icon{
+    width: 76px;
+    position: relative;
+    bottom: 35px;
+    border: 2px solid white;
+    border-radius: 50%;
+}
+
+.banner-div .search-bar{
+    border-radius: 12px;
+}
+
+.search-bar-container .search-icon{
+    height: 14px;
+    position: relative;
+    left: 107px;
+    margin: auto;
+}
+
+.delivery-meta-info{
+    border: 2px solid var(--btn-og-color);
+    border-radius: 12px ;
+}
+.meta-info-btn{
+    font-family: 'Uber Move Text', sans-serif;
+    font-weight: 500;
+    border: 2px solid var(--btn-og-color);
+    border-radius: 20px;
+    background-color: var(--btn-og-color);
+    font-size: 14px;
+    color: black;   
+    padding: 7px 0px;
+}
+
+.meta-info-btn:hover{
+    background-color: var(--btn-hover-color);
+    border-color: var(--btn-hover-color);
+}
+.delivery-info p{
+    font-family: 'Uber Move Text', sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+}
+.delivery-fee{
+    border-right: 2px solid var(--btn-og-color);
+}
+
+.custom-card{
+    width: 47%;
+}
+
+
+
+@media (max-width: 992px) { 
+    .custom-card {
+        width: 100%;
+    }
+}

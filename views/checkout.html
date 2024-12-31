@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout Summary</title>
+    <style>
+        .summary-container { margin: 20px; }
+    </style>
+</head>
+<body>
+    <h1>Order was placed successfully...</h1>
+    <div class="summary-container" id="summaryContainer">
+        <!-- Summary details will be inserted here -->
+    </div>
+
+    <script>
+        // Retrieve the checkout summary from localStorage
+        const checkoutSummary = JSON.parse(localStorage.getItem('checkoutSummary'));
+
+        if (checkoutSummary) {
+            // Create a container to display the summary
+            const container = document.getElementById('summaryContainer');
+
+            // Generate the HTML for the checkout summary
+            let summaryHTML = `
+                <h2>Order Details</h2>
+                <p><strong>Total Items:</strong> ${checkoutSummary.totalItems}</p>
+                <p><strong>Total Price:</strong> ${checkoutSummary.totalPrice} PKR</p>
+                <p><strong>Delivery Agent:</strong> ${checkoutSummary.deliveryAgent}</p>
+                <p><strong>Payment Method:</strong> ${checkoutSummary.paymentMethod}</p>
+                <h3>Cart Items:</h3>
+                <ul>
+            `;
+
+            checkoutSummary.cart.forEach(item => {
+                summaryHTML += `
+                    <li>
+                        ${item.name} - ${item.quantity} x ${item.price} PKR = ${item.quantity * item.price} PKR
+                    </li>
+                `;
+            });
+
+            summaryHTML += `</ul>`;
+
+            // Inject the generated HTML into the container
+            container.innerHTML = summaryHTML;
+        } else {
+            document.getElementById('summaryContainer').innerHTML = '<p>No checkout data available.</p>';
+        }
+    </script>
+</body>
+</html>

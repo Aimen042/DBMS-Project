@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Dashboard - NiceAdmin Bootstrap Template</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="/img/favicon.png" rel="icon">
+  <link href="/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="/vendor/quill/quill.snow.css" rel="stylesheet">
+  <link href="/vendor/quill/quill.bubble.css" rel="stylesheet">
+  <link href="/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="/vendor/simple-datatables/style.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="/css/adminPanel.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: NiceAdmin
+  * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
+  * Updated: Apr 20 2024 with Bootstrap v5.3.3
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top d-flex align-items-center">
+
+    <div class="d-flex align-items-center justify-content-between">
+      <a href="restaurantData.html" class="logo d-flex align-items-center">
+        <img src="/img/logo.png" alt="">
+        <span class="d-none d-lg-block">NiceAdmin</span>
+      </a>
+      <i class="bi bi-list toggle-sidebar-btn"></i>
+    </div><!-- End Logo -->
+
+  </header><!-- End Header -->
+
+  <!-- ======= Sidebar ======= -->
+  <aside id="sidebar" class="sidebar">
+
+    <ul class="sidebar-nav" id="sidebar-nav">
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-layout-text-window-reverse"></i><span>Tables</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="restaurantData.html">
+              <i class="bi bi-circle"></i><span>Restaurants</span>
+            </a>
+          </li>
+          <li>
+            <a href="customerData.html">
+              <i class="bi bi-circle"></i><span>Customers</span>
+            </a>
+          </li>
+          <li>
+            <a href="riderData.html">
+              <i class="bi bi-circle"></i><span>Riders</span>
+            </a>
+          </li>
+          <li>
+            <a href="orderData.html">
+              <i class="bi bi-circle"></i><span>Orders</span>
+            </a>
+          </li>
+          <li>
+            <a href="menuData.html">
+              <i class="bi bi-circle"></i><span>Menu</span>
+            </a>
+          </li>
+        </ul>
+      </li><!-- End Tables Nav -->
+
+    </ul>
+
+  </aside><!-- End Sidebar-->
+
+  <main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Admin Panel</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="restaurantData.html">Home</a></li>
+          <li class="breadcrumb-item active">Admin Panel</li>
+        </ol>
+      </nav>
+      <p>Welcome To The Admin Panel</p>
+      <div class="main-content">
+        <section id="restaurant">
+          <h3>Restaurant</h3>
+          <p>Here you can manage restaurant settings, view performance analytics, and oversee overall operations. You
+            can update business details, opening hours, and policies.</p>
+        </section>
+
+        <section id="orders">
+          <h3>Orders</h3>
+          <p>Track and manage customer orders in real-time. You can update the status of each order, process refunds,
+            and analyze order trends to optimize service.</p>
+        </section>
+
+        <section id="menu">
+          <h3>Menu</h3>
+          <p>Modify the restaurant's menu by adding, editing, or removing items. You can set pricing, manage
+            availability, and create special offers for customers.</p>
+        </section>
+
+        <section id="riders">
+          <h3>Riders</h3>
+          <p>Assign delivery tasks to riders, track their location, and monitor delivery progress. Ensure that
+            deliveries are completed on time and manage rider availability.</p>
+        </section>
+
+        <section id="customers">
+          <h3>Customers</h3>
+          <p>View and manage customer profiles, including order history, preferences, and feedback. Use this data to
+            personalize promotions and improve customer satisfaction.</p>
+        </section>
+      </div>
+    </div>
+    </div><!-- End Page Title -->
+
+  </main><!-- End #main -->
+
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="/vendor/apexcharts/apexcharts.min.js"></script>
+  <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/vendor/chart.js/chart.umd.js"></script>
+  <script src="/vendor/echarts/echarts.min.js"></script>
+  <script src="/vendor/quill/quill.js"></script>
+  <script src="/vendor/simple-datatables/simple-datatables.js"></script>
+  <script src="/vendor/tinymce/tinymce.min.js"></script>
+  <script src="/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="/js/adminPanel.js"></script>
+
+</body>
+
+</html>

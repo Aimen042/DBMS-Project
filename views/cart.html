@@ -9,6 +9,7 @@
     <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet'>
     <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
     <style>
+        @import url('https://fonts.cdnfonts.com/css/uber-move-text');
         ::-webkit-scrollbar {
             width: 8px;
         }
@@ -33,7 +34,7 @@
             min-height: 100vh;
             vertical-align: middle;
             display: flex;
-            font-family: sans-serif;
+            font-family: 'Uber Move Text', sans-serif;
             font-size: 0.8rem;
             font-weight: bold;
         }
@@ -431,6 +432,8 @@
 
             // Redirect to the checkout page
             window.location.href = '/checkout';
+            cart= [];
+            localStorage.setItem('cart', JSON.stringify(cart));
         } else {
             alert('Checkout failed. Please try again.');
         }

@@ -14,7 +14,16 @@ const broadwayRoute = require('./routes/broadwayRoute');
 const cartRoute = require('./routes/cartRoute');
 const connectToDatabase = require('./config/dbconfig');
 const registerRoutes = require('./routes/registerRoutes');
+const addReviewRoute = require('./routes/addReviewRoute');
+const fetchReviewsRoute = require('./routes/fetchReviewsRoute');
 const checkoutRoute = require('./routes/checkoutRoute');
+const adminPanelRoute = require('./routes/adminPanel');
+const restaurantData = require('./routes/restaurantData');
+const customerData = require('./routes/customerData');
+const menuData = require('./routes/menuData');
+const orderData = require('./routes/orderData');
+const riderData = require('./routes/riderData');
+
 const cors = require('cors')
 const session = require('express-session');
 
@@ -53,7 +62,15 @@ app.use('/od',odRoute);
 app.use('/broadway',broadwayRoute);
 app.use('/cart',cartRoute);
 app.use('/checkout',checkoutRoute);
-
+app.use('/addReview',addReviewRoute);
+app.use('/reviews',fetchReviewsRoute);
+app.use('/adminPanel',adminPanelRoute);
+app.use('/restaurantData',restaurantData);
+// app.post('/restaurantData',restaurantData);
+app.use('/customerData',customerData);
+app.use('/menuData',menuData);
+app.use('/orderData',orderData);
+app.use('/riderData',riderData);
 // ODBC Connection String
 app.use(cors());
 

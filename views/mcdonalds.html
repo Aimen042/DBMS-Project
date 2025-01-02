@@ -130,7 +130,7 @@
                         <p class="py-1 m-0 uber-move-menu-item-para">4160pkr<span style="color: #7B7B7B;">. 1300Cal</span></p>
                         <div class="d-flex justify-content-center pt-3">
                             <button class="meta-info-btn text-center px-5" 
-                                    data-name="Double Quarter Pounder® with Cheese Meal" 
+                                    data-name="Double Quarter Pounder with Cheese Meal" 
                                     data-price="4160" 
                                     data-calories="1300" 
                                     data-image="/img/menu/mc_item_4.webp">
@@ -147,7 +147,7 @@
                         <p class="py-1 m-0 uber-move-menu-item-para">5600pkr<span style="color: #7B7B7B;">. 1950Cal</span></p>
                         <div class="d-flex justify-content-center pt-3">
                             <button class="meta-info-btn text-center px-5" 
-                                    data-name="40 pc. Spicy Chicken McNuggets®" 
+                                    data-name="40 pc. Spicy Chicken McNuggets" 
                                     data-price="5600" 
                                     data-calories="1950" 
                                     data-image="/img/menu/mc_item_1.webp">
@@ -164,7 +164,7 @@
                         <p class="py-1 m-0 uber-move-menu-item-para">1630pkr<span style="color: #7B7B7B;">. 410Cal</span></p>
                         <div class="d-flex justify-content-center pt-3">
                             <button class="meta-info-btn text-center px-5" 
-                                    data-name="OREO® McFlurry®" 
+                                    data-name="OREO McFlurry" 
                                     data-price="1630" 
                                     data-calories="410" 
                                     data-image="/img/menu/mc_item_2.webp">
@@ -228,7 +228,7 @@
         <!-- review items start-->
         <div class="row mx-2">
             <div class="col">
-                <div class="d-flex flex-wrap justify-content-between flex-start gap-3">
+                <div id="review-container" class="d-flex flex-wrap justify-content-between flex-start gap-3">
 
                     <div class="card custom-card" > 
                         <div class="card-body">
@@ -336,7 +336,32 @@
             </div>
         </div>
         <!-- review items end-->
+        <div class="row mx-2">
+            <div class="col">
 
+                <div class="container mt-4">
+                    <div class="d-flex justify-content-center">
+                        <button style="
+                            font-family: 'Uber Move Text', sans-serif;
+                            font-weight: 500;
+                            border: 2px solid var(--btn-og-color);
+                            border-radius: 20px;
+                            background-color: var(--btn-og-color);
+                            font-size: 14px;
+                            color: black;   
+                            padding: 7px 0px;" 
+                            
+                            class=" text-center px-5" 
+                            data-restaurant-name="Mc.Donalds" 
+                            onclick="addReview(this)">
+                            Add a review
+                        </button>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
 
 
     </div>
@@ -397,6 +422,96 @@
                 alert(`${item.name} added to cart!`);
             });
         });
+
+        
+        function fetchReviews(restaurantName) {
+    //sendin req to the backend
+    fetch(`/reviews/${restaurantName}`)
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                const reviewContainer = document.getElementById('review-container');
+
+                // Clear any existing reviews
+                reviewContainer.innerHTML = '';
+
+                // Render each review
+                data.reviews.forEach(review => {
+                    const reviewCard = `
+                        <div class="card custom-card">
+                            <div class="card-body">
+                                <blockquote class="blockquote mb-0">
+                                    <p class="uber-move-menu-item-heading mb-0">${review.Name}</p>
+                                    <p class="mb-1">
+                                        ${'⭐'.repeat(Math.floor(review.Rating))}
+                                        <span class="uber-move-menu-item-para" style="color: #5E5E5E;">${new Date(review.ReviewDate).toLocaleDateString()}</span>
+                                    </p>
+                                    <p class="uber-move-menu-item-para">${review.Review}</p>
+                                </blockquote>
+                            </div>
+                        </div>
+                    `;
+                    reviewContainer.innerHTML += reviewCard;
+                });
+            } else {
+                alert("Failed to load reviews. Please try again.");
+            }
+        })
+        .catch(error => {
+            console.error("Error fetching reviews:", error);
+            alert("An error occurred. Please try again later.");
+        });
+}
+
+fetchReviews('Mc.Donalds');
+
+        //adding a review
+        function addReview(button) {
+        const restaurantName = button.getAttribute('data-restaurant-name');
+
+    // Prompt user for rating and review
+    const rating = parseFloat(prompt("Enter your rating (1-5):"));
+    if (isNaN(rating) || rating < 1 || rating > 5) {
+        alert("Please enter a valid rating between 1 and 5.");
+        return;
+    }
+
+    const review = prompt("Enter your review (max 500 characters):");
+    if (review.length > 500) {
+        alert("Review is too long. Please keep it under 500 characters.");
+        return;
+    }
+
+    // Prepare review data
+    const reviewData = {
+        restaurantName,
+        rating,
+        review,
+    };
+
+    // Send review data to backend
+    fetch('/addReview', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(reviewData),
+    })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert("Review added successfully!");
+            } else {
+                alert("Failed to add review. Please try again.");
+            }
+        })
+        .catch(error => {
+            console.error("Error:", error);
+            alert("An error occurred. Please try again.");
+        });
+        fetchReviews('Mc.Donalds');
+}
+
     </script>
 
 </body>

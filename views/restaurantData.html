@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Tables / Data - NiceAdmin Bootstrap Template</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="/img/favicon.png" rel="icon">
+  <link href="/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="/vendor/quill/quill.snow.css" rel="stylesheet">
+  <link href="/vendor/quill/quill.bubble.css" rel="stylesheet">
+  <link href="/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="/vendor/simple-datatables/style.css" rel="stylesheet">
+ 
+  <!-- Template Main CSS File -->
+  <link href="/css/adminPanel.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: NiceAdmin
+  * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
+  * Updated: Apr 20 2024 with Bootstrap v5.3.3
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top d-flex align-items-center">
+
+    <div class="d-flex align-items-center justify-content-between">
+      <a href="adminPanel.html" class="logo d-flex align-items-center">
+        <img src="/img/logo.png" alt="">
+        <span class="d-none d-lg-block">Yummy ka admin</span>
+      </a>
+      <i class="bi bi-list toggle-sidebar-btn"></i>
+    </div><!-- End Logo -->
+
+  </header><!-- End Header -->
+
+  <!-- ======= Sidebar ======= -->
+  <aside id="sidebar" class="sidebar">
+
+    <ul class="sidebar-nav" id="sidebar-nav">
+
+      <li class="nav-item">
+        <a class="nav-link " data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-layout-text-window-reverse"></i><span>Tables</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="tables-nav" class="nav-content collapse show" data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="restaurantData.html">
+              <i class="bi bi-circle"></i><span>Restaurants</span>
+            </a>
+          </li>
+          <li>
+            <a href="customerData.html">
+              <i class="bi bi-circle"></i><span>Customers</span>
+            </a>
+          </li>
+          <li>
+            <a href="riderData.html">
+              <i class="bi bi-circle"></i><span>Riders</span>
+            </a>
+          </li>
+          <li>
+            <a href="orderData.html">
+              <i class="bi bi-circle"></i><span>Orders</span>
+            </a>
+          </li>
+          <li>
+            <a href="menuData.html">
+              <i class="bi bi-circle"></i><span>Menu</span>
+            </a>
+          </li>
+        </ul>
+      </li><!-- End Tables Nav -->
+
+    </ul>
+
+  </aside><!-- End Sidebar-->
+
+  <main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Restaurant Tables</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="adminPanel.html">Home</a></li>
+          <li class="breadcrumb-item">Tables</li>
+          <li class="breadcrumb-item active">Restaurant</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="card">
+            <div class="card-body">
+              <!-- Add Button -->
+              <button class="btn btn-primary btn-sm px-4" id="addButton" style="margin: 10px 0; background-color: #4154f1; color: white;">
+                Add
+              </button>
+              
+              <!-- Table -->
+              <div class="table-responsive">
+                <table class="table datatable table-striped">
+                  <thead>
+                    <tr>
+                      <th>RestaurantID</th>
+                      <th>Name</th>
+                      <th>Description</th>
+                      <th>Address</th>
+                      <th>PhoneNumber</th>
+                      <th>CuisineType</th>
+                      <th>Rating</th>
+                      <th>OpeningTime</th>
+                      <th>ClosingTime</th>
+                      <th>CreatedAt</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr style="display: none;">
+                      <td>1</td>
+                      <td>Restaurant Name</td>
+                      <td >A modern restaurant...</td>
+                      <td >Plot SB-3, Allama Shabbir Ahmed Usmani Road...</td>
+                      <td >(021) 111 432 532</td>
+                      <td >Fast Food</td>
+                      <td >4.2</td>
+                      <td >10:00 AM</td>
+                      <td >08:00 PM</td>
+                      <td >2023-01-01</td>
+                      <td>
+                        <div class="btn-group">
+                          <button class="btn btn-danger btn-sm">Delete</button>
+                          <button class="btn btn-success btn-sm update-btn">Update</button>
+                        </div>
+                      </td>
+                    </tr>
+                    <!-- Add more rows here -->
+                  </tbody>
+                </table>
+              </div>
+              <!-- End Table -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    
+
+    <!-- Add Restaurant Form (Initially Hidden) -->
+    <section class="section" id="addRestaurantSection" style="display: none;">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Add Restaurant</h5>
+              <form id="addRestaurantForm">
+                <div class="mb-3">
+                  <label for="name" class="form-label">Restaurant Name</label>
+                  <input type="text" class="form-control" id="name" required>
+                </div>
+                <div class="mb-3">
+                  <label for="description" class="form-label">Description</label>
+                  <input type="text" class="form-control" id="description" required>
+                </div>
+                <div class="mb-3">
+                  <label for="address" class="form-label">Address</label>
+                  <input type="text" class="form-control" id="address" required>
+                </div>
+                <div class="mb-3">
+                  <label for="phoneNumber" class="form-label">Phone Number</label>
+                  <input type="text" class="form-control" id="phoneNumber" required>
+                </div>
+                <div class="mb-3">
+                  <label for="cuisineType" class="form-label">Cuisine Type</label>
+                  <input type="text" class="form-control" id="cuisineType" required>
+                </div>
+                <div class="mb-3">
+                  <label for="rating" class="form-label">Rating</label>
+                  <input type="number" class="form-control" id="rating" required>
+                </div>
+                <div class="mb-3">
+                  <label for="openingTime" class="form-label">Opening Time</label>
+                  <input type="time" class="form-control" id="openingTime" required>
+                </div>
+                <div class="mb-3">
+                  <label for="closingTime" class="form-label">Closing Time</label>
+                  <input type="time" class="form-control" id="closingTime" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Add Restaurant</button>
+                <button type="button" class="btn btn-secondary ms-2" id="cancelButton">Cancel</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+<!-- Update Form Section (Initially Hidden) -->
+<section class="section" id="updateRestaurantSection" style="display: none;">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Update Restaurant</h5>
+          <form id="updateRestaurantForm">
+            <input type="hidden" id="restaurantId">
+
+            <div class="mb-3">
+              <label for="name" class="form-label">Restaurant Name</label>
+              <input type="text" class="form-control" id="name" required>
+            </div>
+
+            <div class="mb-3">
+              <label for="description" class="form-label">Description</label>
+              <textarea class="form-control" id="description" required></textarea>
+            </div>
+
+            <div class="mb-3">
+              <label for="address" class="form-label">Address</label>
+              <input type="text" class="form-control" id="address" required>
+            </div>
+
+            <div class="mb-3">
+              <label for="phoneNumber" class="form-label">Phone Number</label>
+              <input type="text" class="form-control" id="phoneNumber" required>
+            </div>
+
+            <div class="mb-3">
+              <label for="cuisineType" class="form-label">Cuisine Type</label>
+              <input type="text" class="form-control" id="cuisineType" required>
+            </div>
+
+            <div class="mb-3">
+              <label for="rating" class="form-label">Rating</label>
+              <input type="number" class="form-control" id="rating" required>
+            </div>
+
+            <div class="mb-3">
+              <label for="openingTime" class="form-label">Opening Time</label>
+              <input type="time" class="form-control" id="openingTime" required>
+            </div>
+
+            <div class="mb-3">
+              <label for="closingTime" class="form-label">Closing Time</label>
+              <input type="time" class="form-control" id="closingTime" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Update Restaurant</button>
+            <button type="button" class="btn btn-secondary ms-2" id="cancelUpdateButton">Cancel</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+    <!-- <div class="copyright">
+      &copy; Copyright <strong><span>NiceAdmin</span></strong>. All Rights Reserved
+    </div>
+    <div class="credits">
+      All the links in the footer should remain intact. -->
+    <!-- You can delete the links only if you purchased the pro version. -->
+    <!-- Licensing information: https://bootstrapmade.com/license/ -->
+    <!-- Purchase the pro version with
+        working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
+    <!--  Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>-->
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="/vendor/apexcharts/apexcharts.min.js"></script>
+  <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/vendor/chart.js/chart.umd.js"></script>
+  <script src="/vendor/echarts/echarts.min.js"></script>
+  <script src="/vendor/quill/quill.js"></script>
+  <script src="/vendor/simple-datatables/simple-datatables.js"></script>
+  <script src="/vendor/tinymce/tinymce.min.js"></script>
+  <script src="/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="/js/adminPanel.js"></script>
+
+  <!-- For Retrieving Data -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const tableBody = document.querySelector('.datatable tbody');
+
+      // Retrieve data and populate the table
+      fetch('/restaurantData/restaurant-tables')
+        .then((response) => response.json())
+        .then((data) => {
+          data.forEach((restaurant) => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+           <td>${restaurant.RestaurantID}</td>
+  <td >${restaurant.Name}</td>
+  <td >${restaurant.Description}</td>
+  <td table-cell">${restaurant.Address}</td>
+  <td table-nowrap">${restaurant.PhoneNumber}</td>
+  <td table-nowrap">${restaurant.CuisineType}</td>
+  <td table-nowrap">${restaurant.Rating}</td>
+  <td table-nowrap">${restaurant.OpeningTime}</td>
+  <td table-nowrap">${restaurant.ClosingTime}</td>
+  <td table-nowrap">${restaurant.CreatedAt}</td>
+  <td>
+    <button class="btn btn-danger btn-sm delete-btn" data-id="${restaurant.RestaurantID}">Delete</button>
+    <button class="btn btn-success btn-sm ms-2 update-btn" data-id="${restaurant.RestaurantID}">Update</button>
+  </td>
+        `;
+            tableBody.appendChild(row);
+          });
+
+          // DELETE request
+          const deleteButtons = document.querySelectorAll('.delete-btn');
+          deleteButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+              const restaurantId = e.target.getAttribute('data-id');
+
+              // Send DELETE request to the server
+              fetch(`/restaurantData/restaurant-tables/${restaurantId}`, {
+                method: 'DELETE',
+              })
+                .then((response) => response.json())
+                .then((message) => {
+                  console.log(message); // Log the success message
+                  // Remove the row from the table
+                  window.location.href = '/restaurantData';
+
+                })
+                .catch((error) => {
+                  console.error('Error deleting restaurant:', error);
+                });
+            });
+          });
+        })
+        .catch((error) => {
+          console.error('Error fetching data:', error);
+        });
+    });
+  </script>
+
+  <!--Adding Restaurant-->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+    const addButton = document.getElementById('addButton');
+    const addRestaurantSection = document.getElementById('addRestaurantSection');
+    const addRestaurantForm = document.getElementById('addRestaurantForm');
+    const cancelButton = document.getElementById('cancelButton');
+    const tableBody = document.querySelector('.datatable tbody');
+
+    // Show the form when the "Add" button is clicked
+    addButton.addEventListener('click', () => {
+      addRestaurantSection.style.display = 'block';  // Show the form
+      addButton.style.display = 'none';  // Hide the Add button
+    });
+
+    // Hide the form when the "Cancel" button is clicked
+    cancelButton.addEventListener('click', () => {
+      addRestaurantSection.style.display = 'none';  // Hide the form
+      addButton.style.display = 'block';  // Show the Add button
+    });
+
+    // Add restaurant form submission
+    addRestaurantForm.addEventListener('submit', (e) => {
+      e.preventDefault(); // Prevent default form submission
+
+      const restaurantData = {
+        Name: document.getElementById('name').value,
+        Description: document.getElementById('description').value,
+        Address: document.getElementById('address').value,
+        PhoneNumber: document.getElementById('phoneNumber').value,
+        CuisineType: document.getElementById('cuisineType').value,
+        Rating: document.getElementById('rating').value,
+        OpeningTime: document.getElementById('openingTime').value,
+        ClosingTime: document.getElementById('closingTime').value,
+      };
+
+      console.log('Restaurant data to send:', restaurantData);
+      
+      // Send POST request to add a restaurant
+      fetch('/restaurantData/restaurant-tables', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(restaurantData),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data); // Log success message
+         
+          window.location.href = '/restaurantData';
+          // Reset form
+          addRestaurantForm.reset();
+          // Hide the form and show the "Add" button again
+          addRestaurantSection.style.display = 'none';
+          addButton.style.display = 'block';
+        })
+        .catch((error) => {
+          console.error('Error adding restaurant:', error);
+        });
+    });
+  });
+
+
+  //UPDATE method
+  document.addEventListener('DOMContentLoaded', () => {
+  const tableBody = document.querySelector('.datatable tbody');
+  const updateRestaurantSection = document.getElementById('updateRestaurantSection');
+  const updateRestaurantForm = document.getElementById('updateRestaurantForm');
+  const cancelUpdateButton = document.getElementById('cancelUpdateButton');
+
+  // When clicking the "Update" button
+  tableBody.addEventListener('click', (e) => {
+    if (e.target.classList.contains('update-btn')) {
+      const restaurantId = e.target.getAttribute('data-id');
+      // Fetch restaurant data based on ID
+      // alert('btn click')
+      console.log(restaurantId)
+
+      fetch(`/restaurantData/restaurant-tables/${restaurantId}`)
+      //embed backend logic to get data
+        .then(response => response.json())
+        .then((restaurant) => {
+          // Populate the form with the current restaurant data
+          document.getElementById('restaurantId').value = restaurant.RestaurantID;
+          document.getElementById('name').value = restaurant.Name;
+          document.getElementById('description').value = restaurant.Description;
+          document.getElementById('address').value = restaurant.Address;
+          document.getElementById('phoneNumber').value = restaurant.PhoneNumber;
+          document.getElementById('cuisineType').value = restaurant.CuisineType;
+          document.getElementById('rating').value = restaurant.Rating;
+          document.getElementById('openingTime').value = restaurant.OpeningTime;
+          document.getElementById('closingTime').value = restaurant.ClosingTime;
+          
+          // Show the form
+          updateRestaurantSection.style.display = 'block';
+        });
+    }
+  });
+
+  // When cancel button is clicked
+  cancelUpdateButton.addEventListener('click', () => {
+    updateRestaurantSection.style.display = 'none';
+  });
+
+  // Handle the update form submission
+  updateRestaurantForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    
+    const restaurantData = {
+      Name: document.getElementById('name').value,
+      Description: document.getElementById('description').value,
+      Address: document.getElementById('address').value,
+      PhoneNumber: document.getElementById('phoneNumber').value,
+      CuisineType: document.getElementById('cuisineType').value,
+      Rating: document.getElementById('rating').value,
+      OpeningTime: document.getElementById('openingTime').value,
+      ClosingTime: document.getElementById('closingTime').value,
+    };
+
+    const restaurantId = document.getElementById('restaurantId').value;
+
+    // Send PUT request to update restaurant data
+    fetch(`/restaurantData/restaurant-tables/${restaurantId}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(restaurantData),
+    })
+      .then(response => response.json())
+      .then((data) => {
+        console.log(data);
+        // Hide the form and refresh the table
+        window.location.href = '/restaurantData';
+      })
+      .catch((error) => {
+        console.error('Error updating restaurant:', error);
+      });
+  });
+});
+
+  
+  
+
+  </script>
+
+
+
+
+</body>
+
+</html>

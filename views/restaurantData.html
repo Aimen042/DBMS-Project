@@ -48,7 +48,7 @@
     <div class="d-flex align-items-center justify-content-between">
       <a href="adminPanel.html" class="logo d-flex align-items-center">
         <img src="/img/logo.png" alt="">
-        <span class="d-none d-lg-block">Yummy ka admin</span>
+        <span class="d-none d-lg-block">Admin Panel</span>
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
     </div><!-- End Logo -->
@@ -229,44 +229,49 @@
           <form id="updateRestaurantForm">
             <input type="hidden" id="restaurantId">
 
+
+            <div class="mb-3">
+              <label for="name" class="form-label">Restaurant Id</label>
+              <input type="text" class="form-control" id="update-id" required>
+            </div>
             <div class="mb-3">
               <label for="name" class="form-label">Restaurant Name</label>
-              <input type="text" class="form-control" id="name" required>
+              <input type="text" class="form-control" id="update-name" required>
             </div>
 
             <div class="mb-3">
               <label for="description" class="form-label">Description</label>
-              <textarea class="form-control" id="description" required></textarea>
+              <textarea class="form-control" id="update-description" required></textarea>
             </div>
 
             <div class="mb-3">
               <label for="address" class="form-label">Address</label>
-              <input type="text" class="form-control" id="address" required>
+              <input type="text" class="form-control" id="update-address" required>
             </div>
 
             <div class="mb-3">
               <label for="phoneNumber" class="form-label">Phone Number</label>
-              <input type="text" class="form-control" id="phoneNumber" required>
+              <input type="text" class="form-control" id="update-phoneNumber" required>
             </div>
 
             <div class="mb-3">
               <label for="cuisineType" class="form-label">Cuisine Type</label>
-              <input type="text" class="form-control" id="cuisineType" required>
+              <input type="text" class="form-control" id="update-cuisineType" required>
             </div>
 
             <div class="mb-3">
               <label for="rating" class="form-label">Rating</label>
-              <input type="number" class="form-control" id="rating" required>
+              <input type="number" class="form-control" id="update-rating" required>
             </div>
 
             <div class="mb-3">
               <label for="openingTime" class="form-label">Opening Time</label>
-              <input type="time" class="form-control" id="openingTime" required>
+              <input type="time" class="form-control" id="update-openingTime" required>
             </div>
 
             <div class="mb-3">
               <label for="closingTime" class="form-label">Closing Time</label>
-              <input type="time" class="form-control" id="closingTime" required>
+              <input type="time" class="form-control" id="update-closingTime" required>
             </div>
 
             <button type="submit" class="btn btn-primary">Update Restaurant</button>
@@ -282,16 +287,6 @@
 
   <!-- ======= Footer ======= -->
   <footer id="footer" class="footer">
-    <!-- <div class="copyright">
-      &copy; Copyright <strong><span>NiceAdmin</span></strong>. All Rights Reserved
-    </div>
-    <div class="credits">
-      All the links in the footer should remain intact. -->
-    <!-- You can delete the links only if you purchased the pro version. -->
-    <!-- Licensing information: https://bootstrapmade.com/license/ -->
-    <!-- Purchase the pro version with
-        working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
-    <!--  Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>-->
     </div>
   </footer><!-- End Footer -->
 
@@ -435,62 +430,94 @@
 
 
   //UPDATE method
-  document.addEventListener('DOMContentLoaded', () => {
-  const tableBody = document.querySelector('.datatable tbody');
-  const updateRestaurantSection = document.getElementById('updateRestaurantSection');
-  const updateRestaurantForm = document.getElementById('updateRestaurantForm');
-  const cancelUpdateButton = document.getElementById('cancelUpdateButton');
+    const updateRestaurantSection = document.getElementById('updateRestaurantSection');
+    const updateButtons = document.querySelectorAll('.update-btn');
+    const tableBody = document.querySelector('.datatable tbody');
 
-  // When clicking the "Update" button
-  tableBody.addEventListener('click', (e) => {
+    tableBody.addEventListener('click', (e) => {
     if (e.target.classList.contains('update-btn')) {
-      const restaurantId = e.target.getAttribute('data-id');
-      // Fetch restaurant data based on ID
-      // alert('btn click')
-      console.log(restaurantId)
 
-      fetch(`/restaurantData/restaurant-tables/${restaurantId}`)
-      //embed backend logic to get data
-        .then(response => response.json())
-        .then((restaurant) => {
-          // Populate the form with the current restaurant data
-          document.getElementById('restaurantId').value = restaurant.RestaurantID;
-          document.getElementById('name').value = restaurant.Name;
-          document.getElementById('description').value = restaurant.Description;
-          document.getElementById('address').value = restaurant.Address;
-          document.getElementById('phoneNumber').value = restaurant.PhoneNumber;
-          document.getElementById('cuisineType').value = restaurant.CuisineType;
-          document.getElementById('rating').value = restaurant.Rating;
-          document.getElementById('openingTime').value = restaurant.OpeningTime;
-          document.getElementById('closingTime').value = restaurant.ClosingTime;
+      console.log('Update button clicked');
+      
+      
+      const restaurantIdInput = document.getElementById('update-id');
+      const nameInput = document.getElementById('update-name');
+      const descriptionInput = document.getElementById('update-description');
+      const addressInput = document.getElementById('update-address');
+      const phoneNumberInput = document.getElementById('update-phoneNumber');
+      const cuisineTypeInput = document.getElementById('update-cuisineType');
+      const ratingInput = document.getElementById('update-rating');
+      const openingTimeInput = document.getElementById('update-openingTime');
+      const closingTimeInput = document.getElementById('update-closingTime');
+      const restaurantId = e.target.getAttribute('data-id');  
+
+      console.log(restaurantIdInput)
+      console.log(nameInput)
+
+      //insert generated code here
+      updateRestaurantSection.style.display = 'block';
+      
+
+      const rows = tableBody.querySelectorAll('tr');
+      console.log(rows);
+    rows.forEach((row) => { 
+      const reqdRestaurantID = row.querySelector('td').innerHTML; // Access first <td>'s innerHTML
+
+        console.log('First TD Inner HTML:', reqdRestaurantID);
+
+        if(reqdRestaurantID === restaurantId){
+          const cells = row.querySelectorAll('td');
+          console.log(cells)
+          restaurantIdInput.value = cells[0].textContent.trim(); // Second cell is Name
+          nameInput.value = cells[1].textContent.trim(); // Second cell is Name
+    descriptionInput.value = cells[2].textContent.trim(); // Third cell is Description
+    addressInput.value = cells[3].textContent.trim(); // Fourth cell is Address
+    phoneNumberInput.value = cells[4].textContent.trim(); // Fifth cell is Phone Number
+    cuisineTypeInput.value = cells[5].textContent.trim(); // Sixth cell is Cuisine Type
+    ratingInput.value = cells[6].textContent.trim(); // Seventh cell is Rating
+
+    //handling time
+    const openingTime = cells[7].textContent.trim();
+    const closingTime = cells[8].textContent.trim();
+
+    // Convert time to HH:MM format if necessary
+    const formatTime = (timeString) => {
+      const date = new Date(`1970-01-01T${timeString}`); // Parse time as a date
+      const hours = String(date.getHours()).padStart(2, '0'); // Get hours
+      const minutes = String(date.getMinutes()).padStart(2, '0'); // Get minutes
+      return `${hours}:${minutes}`; // Return in HH:MM format
+    };
+
+    openingTimeInput.value = formatTime(openingTime);
+    closingTimeInput.value = formatTime(closingTime);
+
           
-          // Show the form
-          updateRestaurantSection.style.display = 'block';
-        });
-    }
-  });
-
+        }
+    })
+          
+    }})
+    
   // When cancel button is clicked
   cancelUpdateButton.addEventListener('click', () => {
     updateRestaurantSection.style.display = 'none';
   });
-
+  
   // Handle the update form submission
   updateRestaurantForm.addEventListener('submit', (e) => {
     e.preventDefault();
     
     const restaurantData = {
-      Name: document.getElementById('name').value,
-      Description: document.getElementById('description').value,
-      Address: document.getElementById('address').value,
-      PhoneNumber: document.getElementById('phoneNumber').value,
-      CuisineType: document.getElementById('cuisineType').value,
-      Rating: document.getElementById('rating').value,
-      OpeningTime: document.getElementById('openingTime').value,
-      ClosingTime: document.getElementById('closingTime').value,
+      Name: document.getElementById('update-name').value,
+      Description: document.getElementById('update-description').value,
+      Address: document.getElementById('update-address').value,
+      PhoneNumber: document.getElementById('update-phoneNumber').value,
+      CuisineType: document.getElementById('update-cuisineType').value,
+      Rating: document.getElementById('update-rating').value,
+      OpeningTime: document.getElementById('update-openingTime').value,
+      ClosingTime: document.getElementById('update-closingTime').value,
     };
-
-    const restaurantId = document.getElementById('restaurantId').value;
+    console.log(restaurantData)
+    const restaurantId = document.getElementById('update-id').value;
 
     // Send PUT request to update restaurant data
     fetch(`/restaurantData/restaurant-tables/${restaurantId}`, {
@@ -510,7 +537,7 @@
         console.error('Error updating restaurant:', error);
       });
   });
-});
+
 
   
   

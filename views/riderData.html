@@ -15,7 +15,9 @@
 
   <!-- Google Fonts -->
   <link href="https://fonts.gstatic.com" rel="preconnect">
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -29,13 +31,6 @@
   <!-- Template Main CSS File -->
   <link href="/css/adminPanel.css" rel="stylesheet">
 
-  <!-- =======================================================
-  * Template Name: NiceAdmin
-  * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
-  * Updated: Apr 20 2024 with Bootstrap v5.3.3
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
 </head>
 
 <body>
@@ -59,28 +54,13 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link " data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
+        <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-layout-text-window-reverse"></i><span>Tables</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
-        <ul id="tables-nav" class="nav-content collapse show" data-bs-parent="#sidebar-nav">
+        <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
             <a href="restaurantData.html">
               <i class="bi bi-circle"></i><span>Restaurants</span>
-            </a>
-          </li>
-          <li>
-            <a href="customerData.html">
-              <i class="bi bi-circle"></i><span>Customers</span>
-            </a>
-          </li>
-          <li>
-            <a href="riderData.html">
-              <i class="bi bi-circle"></i><span>Riders</span>
-            </a>
-          </li>
-          <li>
-            <a href="orderData.html">
-              <i class="bi bi-circle"></i><span>Orders</span>
             </a>
           </li>
           <li>
@@ -88,13 +68,19 @@
               <i class="bi bi-circle"></i><span>Menu</span>
             </a>
           </li>
+          <li>
+            <a href="riderData.html">
+              <i class="bi bi-circle"></i><span>Riders</span>
+            </a>
+          </li>
+
+
         </ul>
       </li><!-- End Tables Nav -->
 
     </ul>
 
   </aside><!-- End Sidebar-->
-
   <main id="main" class="main">
 
     <div class="pagetitle">
@@ -117,7 +103,8 @@
 
               <!-- Table with stripped rows -->
               <table class="table datatable">
-                <button class="btn btn-primary btn-sm" style="padding-left: 25px; padding-right: 25px; margin-top: 10px; margin-bottom: 10px; background-color: #4154f1; color: white;">Add</button>
+                <button class="btn btn-primary btn-sm" id="addButton"
+                  style="padding-left: 25px; padding-right: 25px; margin-top: 10px; margin-bottom: 10px; background-color: #4154f1; color: white;">Add</button>
                 <thead>
                   <tr>
                     <th>
@@ -133,7 +120,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
+                  <tr style="display: none;">
                     <td></td>
                     <td></td>
                     <td></td>
@@ -142,14 +129,62 @@
                     <td></td>
                     <td></td>
                     <td>
-                      <button class="btn btn-danger btn-sm" style="color: white;" data-id="${rider.AgentID}">Delete</button>
+                      <button class="btn btn-danger btn-sm" style="color: white;"
+                        data-id="${rider.AgentID}">Delete</button>
                       <button class="btn btn-success btn-sm ms-2" style="color: white;">Update</button>
                     </td>
                   </tr>
-                  
+
                 </tbody>
               </table>
               <!-- End Table with stripped rows -->
+
+
+              <!-- Add Restaurant Form (Initially Hidden) -->
+              <section class="section" id="addRiderSection" style="display: none;">
+                <div class="row">
+                  <div class="col-lg-12">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title">Add Rider</h5>
+                        <form id="addRiderForm">
+                          <div class="mb-3">
+                            <label for="riderName" class="form-label">Rider Name</label>
+                            <input type="text" class="form-control" id="riderName" required>
+                          </div>
+                          <div class="mb-3">
+                            <label for="phoneNumber" class="form-label">Phone Number</label>
+                            <input type="text" class="form-control" id="phoneNumber" required>
+                          </div>
+                          <div class="mb-3">
+                            <label for="status" class="form-label">Status</label>
+                            <select class="form-control" id="status" required>
+                              <option value="Available">Available</option>
+                              <option value="Unavailable">Unavailable</option>
+                            </select>
+                          </div>
+                          <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" required>
+                          </div>
+                          <div class="mb-3">
+                            <label for="joiningDate" class="form-label">Joining Date</label>
+                            <input type="date" class="form-control" id="joiningDate" required>
+                          </div>
+                          <div class="mb-3">
+                            <label for="vehicleDetails" class="form-label">Vehicle Details</label>
+                            <input type="text" class="form-control" id="vehicleDetails" required>
+                          </div>
+                          <button type="submit" class="btn btn-primary">Add Rider</button>
+                          <button type="button" class="btn btn-secondary ms-2" id="cancelButton">Cancel</button>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+
 
             </div>
           </div>
@@ -158,24 +193,73 @@
       </div>
     </section>
 
+    <!-- Update Form Section (Initially Hidden) -->
+    <section class="section" id="updateRiderSection" style="display: none;">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Update Rider</h5>
+              <form id="updateRiderForm">
+                <input type="hidden" id="riderId">
+
+                <div class="mb-3">
+                  <label for="riderId" class="form-label">Rider Id</label>
+                  <input type="text" class="form-control" id="update-id" required readonly>
+                </div>
+
+                <div class="mb-3">
+                  <label for="name" class="form-label">Rider Name</label>
+                  <input type="text" class="form-control" id="update-name" required>
+                </div>
+
+                <div class="mb-3">
+                  <label for="phoneNumber" class="form-label">Phone Number</label>
+                  <input type="text" class="form-control" id="update-phoneNumber" required>
+                </div>
+
+
+
+                <div class="mb-3">
+                  <label for="status" class="form-label">Status</label>
+                  <select class="form-control" id="update-status" required>
+                    <option value="Active">Available</option>
+                    <option value="Inactive">Unavailable</option>
+                  </select>
+                </div>
+
+                <div class="mb-3">
+                  <label for="email" class="form-label">Email</label>
+                  <input type="email" class="form-control" id="update-email" required>
+                </div>
+
+                <div class="mb-3">
+                  <label for="joiningDate" class="form-label">Joining Date</label>
+                  <input type="date" class="form-control" id="update-joiningDate" required>
+                </div>
+
+                <div class="mb-3">
+                  <label for="vehicleDetails" class="form-label">Vehicle Details</label>
+                  <input type="text" class="form-control" id="update-vehicleDetails" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Update Rider</button>
+                <button type="button" class="btn btn-secondary ms-2" id="cancelUpdateButton">Cancel</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
   </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
-  <footer id="footer" class="footer">
-    <!-- <div class="copyright">
-      &copy; Copyright <strong><span>NiceAdmin</span></strong>. All Rights Reserved
-    </div>
-    <div class="credits">
-      All the links in the footer should remain intact. -->
-      <!-- You can delete the links only if you purchased the pro version. -->
-      <!-- Licensing information: https://bootstrapmade.com/license/ -->
-      <!-- Purchase the pro version with
-        working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
-    <!--  Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>-->
-    </div>
-  </footer><!-- End Footer -->
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
   <script src="/vendor/apexcharts/apexcharts.min.js"></script>
@@ -211,7 +295,7 @@
           <td>${rider.VehicleDetails}</td>
           <td>
             <button class="btn btn-danger btn-sm delete-btn" data-id="${rider.AgentID}">Delete</button>
-            <button class="btn btn-success btn-sm ms-2">Update</button>
+            <button class="btn btn-success btn-sm ms-2 update-btn" data-id="${rider.AgentID}">Update</button>
           </td>
         `;
             tableBody.appendChild(row);
@@ -221,17 +305,18 @@
           const deleteButtons = document.querySelectorAll('.delete-btn');
           deleteButtons.forEach(button => {
             button.addEventListener('click', (e) => {
-              const restaurantId = e.target.getAttribute('data-id');
+              const AgentID = e.target.getAttribute('data-id');
 
               // Send DELETE request to the server
-              fetch(`/riderData/rider-tables/${AgentId}`, {
+              fetch(`/riderData/rider-tables/${AgentID}`, {
                 method: 'DELETE',
               })
                 .then((response) => response.json())
                 .then((message) => {
                   console.log(message); // Log the success message
                   // Remove the row from the table
-                  e.target.closest('tr').remove();
+                  window.location.href = '/riderData';
+
                 })
                 .catch((error) => {
                   console.error('Error deleting rider:', error);
@@ -243,6 +328,171 @@
           console.error('Error fetching data:', error);
         });
     });
+
+
+    //adding rider
+    document.addEventListener('DOMContentLoaded', () => {
+      const addButton = document.getElementById('addButton');
+      const addRiderSection = document.getElementById('addRiderSection');
+      const addRiderForm = document.getElementById('addRiderForm');
+      const cancelButton = document.getElementById('cancelButton');
+      const tableBody = document.querySelector('.datatable tbody');
+
+      // Show the form when the "Add" button is clicked
+      addButton.addEventListener('click', () => {
+        addRiderSection.style.display = 'block'; // Show the form
+        addButton.style.display = 'none'; // Hide the Add button
+      });
+
+      // Hide the form when the "Cancel" button is clicked
+      cancelButton.addEventListener('click', () => {
+        addRiderSection.style.display = 'none'; // Hide the form
+        addButton.style.display = 'block'; // Show the Add button
+      });
+
+      // Add rider form submission
+      addRiderForm.addEventListener('submit', (e) => {
+        e.preventDefault(); // Prevent default form submission
+        // console.log('pollos')
+
+        const riderData = {
+          Name: document.getElementById('riderName').value,
+          PhoneNumber: document.getElementById('phoneNumber').value,
+          Status: document.getElementById('status').value,
+          Email: document.getElementById('email').value,
+          JoiningDate: document.getElementById('joiningDate').value,
+          VehicleDetails: document.getElementById('vehicleDetails').value,
+        };
+
+        console.log('Rider data to send:', riderData);
+
+        // Send POST request to add a rider
+        fetch('/riderData/rider-tables', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(riderData),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log(data); // Log success message
+
+            window.location.href = '/riderData';
+            // Reset form
+            addRiderForm.reset();
+            // Hide the form and show the "Add" button again
+            addRiderSection.style.display = 'none';
+            addButton.style.display = 'block';
+          })
+          .catch((error) => {
+            console.error('Error adding rider:', error);
+          });
+      });
+    });
+
+    //update request
+    const updateRiderSection = document.getElementById('updateRiderSection');
+    const updateButtons = document.querySelectorAll('.update-btn');
+    const tableBody = document.querySelector('.datatable tbody');
+
+    tableBody.addEventListener('click', (e) => {
+      if (e.target.classList.contains('update-btn')) {
+        console.log('Update button clicked');
+
+        const riderIdInput = document.getElementById('update-id');
+        const nameInput = document.getElementById('update-name');
+        const phoneNumberInput = document.getElementById('update-phoneNumber');
+        const statusInput = document.getElementById('update-status');
+        const emailInput = document.getElementById('update-email');
+        const joiningDateInput = document.getElementById('update-joiningDate');
+        const vehicleDetailsInput = document.getElementById('update-vehicleDetails');
+        const riderId = e.target.getAttribute('data-id');
+
+        console.log(riderIdInput);
+        console.log(nameInput);
+        console.log(riderId);
+
+        // Show the update section
+        updateRiderSection.style.display = 'block';
+
+        const rows = tableBody.querySelectorAll('tr');
+        console.log(rows);
+
+        rows.forEach((row) => {
+          const reqdRiderID = row.querySelector('td').innerHTML; // Access first <td>'s innerHTML
+          console.log('First TD Inner HTML:', reqdRiderID);
+
+          if (reqdRiderID === riderId) {
+            const cells = row.querySelectorAll('td');
+            console.log(cells);
+
+            riderIdInput.value = cells[0].textContent.trim(); // First cell is Rider ID
+            nameInput.value = cells[1].textContent.trim(); // Second cell is Rider Name
+            phoneNumberInput.value = cells[2].textContent.trim(); // Third cell is Phone Number
+            statusInput.value = cells[3].textContent.trim(); // Fifth cell is Status
+
+            const status = cells[3].textContent.trim(); // Get status from table cell
+            if (status === 'Available') {
+              statusInput.value = 'Active';
+            } else if (status === 'Unavailable') {
+              statusInput.value = 'Inactive';
+            }
+
+            emailInput.value = cells[4].textContent.trim(); // Fourth cell is Email
+            joiningDateInput.value = cells[5].textContent.trim(); // Sixth cell is Joining Date
+            vehicleDetailsInput.value = cells[6].textContent.trim(); // Seventh cell is Vehicle Details
+          }
+        });
+      }
+
+      const cancelUpdateButton = document.getElementById('cancelUpdateButton');
+      cancelUpdateButton.addEventListener('click', () => {
+        updateRiderSection.style.display = 'none'; // Hide the rider update section
+        const updateRiderForm = document.getElementById('updateRiderForm');
+        updateRiderForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+
+          // Gather rider data from the form
+          const riderData = {
+            Name: document.getElementById('update-name').value,
+            PhoneNumber: document.getElementById('update-phoneNumber').value,
+            Status: document.getElementById('update-status').value,
+            Email: document.getElementById('update-email').value,
+            JoiningDate: document.getElementById('update-joiningDate').value,
+            VehicleDetails: document.getElementById('update-vehicleDetails').value,
+          };
+
+          console.log(riderData);
+
+          // Retrieve rider ID
+          const riderId = document.getElementById('update-id').value;
+          console.log(riderId);
+
+          // Send PUT request to update rider data
+          fetch(`/riderData/rider-tables/${riderId}`, {
+            method: 'PUT',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(riderData),
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              console.log(data);
+              // Hide the form and refresh the table
+              window.location.href = '/riderData';
+            })
+            .catch((error) => {
+              console.error('Error updating rider:', error);
+            });
+        });
+
+      });
+    });
+
+
+
   </script>
 
 </body>

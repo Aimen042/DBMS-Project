@@ -88,13 +88,12 @@ router.delete('/rider-tables/:id', async (req, res) => {
 
 // Update endpoint
 router.put('/rider-tables/:id', async (req, res) => {
-  const AgentId = req.params.id;
+  const AgentId = req.params.id; // Rider's ID to be updated
   const { Name, PhoneNumber, Status, Email, JoiningDate, VehicleDetails } = req.body;
 
-  console.log('Update request received');
-  console.log('AgentID:', AgentId);
+  console.log('PUT request received for AgentID:', AgentId);
   console.log('Request body:', req.body);
-
+  console.log(req.body)
   if (!Name || !PhoneNumber || !Status || !Email || !JoiningDate || !VehicleDetails) {
     return res.status(400).json({ message: 'All fields are required' });
   }
@@ -112,6 +111,7 @@ router.put('/rider-tables/:id', async (req, res) => {
         VehicleDetails = ?
       WHERE AgentID = ?
     `;
+
     const result = await connection.query(updateQuery, [
       Name,
       PhoneNumber,
@@ -122,7 +122,7 @@ router.put('/rider-tables/:id', async (req, res) => {
       AgentId,
     ]);
 
-    console.log('Update query executed:', result);
+    console.log('Update query result:', result);
 
     if (result.affectedRows === 0) {
       return res.status(404).json({ message: `No rider found with ID ${AgentId}` });

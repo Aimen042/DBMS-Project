@@ -222,9 +222,9 @@
 
                 <div class="mb-3">
                   <label for="status" class="form-label">Status</label>
-                  <select class="form-control" id="update-status" required>
-                    <option value="Active">Available</option>
-                    <option value="Inactive">Unavailable</option>
+                  <select class="form-control" id="update-availibility" required>
+                    <option value="Available">Available</option>
+                    <option value="Unavailable">Unavailable</option>
                   </select>
                 </div>
 
@@ -403,7 +403,7 @@
         const riderIdInput = document.getElementById('update-id');
         const nameInput = document.getElementById('update-name');
         const phoneNumberInput = document.getElementById('update-phoneNumber');
-        const statusInput = document.getElementById('update-status');
+        const statusInput = document.getElementById('update-availibility');
         const emailInput = document.getElementById('update-email');
         const joiningDateInput = document.getElementById('update-joiningDate');
         const vehicleDetailsInput = document.getElementById('update-vehicleDetails');
@@ -434,9 +434,9 @@
 
             const status = cells[3].textContent.trim(); // Get status from table cell
             if (status === 'Available') {
-              statusInput.value = 'Active';
+              statusInput.value = 'Available';
             } else if (status === 'Unavailable') {
-              statusInput.value = 'Inactive';
+              statusInput.value = 'Unavailable';
             }
 
             emailInput.value = cells[4].textContent.trim(); // Fourth cell is Email
@@ -445,54 +445,55 @@
           }
         });
       }
-
-      const cancelUpdateButton = document.getElementById('cancelUpdateButton');
-      cancelUpdateButton.addEventListener('click', () => {
-        updateRiderSection.style.display = 'none'; // Hide the rider update section
-        const updateRiderForm = document.getElementById('updateRiderForm');
-        updateRiderForm.addEventListener('submit', (e) => {
-          e.preventDefault();
-
-          // Gather rider data from the form
-          const riderData = {
-            Name: document.getElementById('update-name').value,
-            PhoneNumber: document.getElementById('update-phoneNumber').value,
-            Status: document.getElementById('update-status').value,
-            Email: document.getElementById('update-email').value,
-            JoiningDate: document.getElementById('update-joiningDate').value,
-            VehicleDetails: document.getElementById('update-vehicleDetails').value,
-          };
-
-          console.log(riderData);
-
-          // Retrieve rider ID
-          const riderId = document.getElementById('update-id').value;
-          console.log(riderId);
-
-          // Send PUT request to update rider data
-          fetch(`/riderData/rider-tables/${riderId}`, {
-            method: 'PUT',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(riderData),
-          })
-            .then((response) => response.json())
-            .then((data) => {
-              console.log(data);
-              // Hide the form and refresh the table
-              window.location.href = '/riderData';
-            })
-            .catch((error) => {
-              console.error('Error updating rider:', error);
-            });
-        });
-
-      });
     });
 
+    const cancelUpdateButton = document.getElementById('cancelUpdateButton');
+    cancelUpdateButton.addEventListener('click', () => {
+      updateRiderSection.style.display = 'none'; // Hide the rider update section
+    });
 
+    //update btn
+    document.addEventListener('submit', (e) => {
+      e.preventDefault();
+      console.log('pollo')
 
+  // Collect rider data from input fields 
+ const joiningDate = document.getElementById('update-joiningDate').value;
+const formattedDate = new Date(joiningDate).toISOString().split('T')[0]; // Converts to 'YYYY-MM-DD'
+
+const riderData = {
+  Name: document.getElementById('update-name').value,
+  PhoneNumber: document.getElementById('update-phoneNumber').value,
+  Status: document.getElementById('update-availibility').value, // Assuming Status is updated to the correct field
+  Email: document.getElementById('update-email').value,
+  JoiningDate: formattedDate, // Use the formatted date here
+  VehicleDetails: document.getElementById('update-vehicleDetails').value,
+};
+  
+  // Get the rider ID from a hidden input or field
+  const riderId = document.getElementById('update-id').value;
+  console.log(riderId);
+
+  //Send PUT request to update rider data
+  fetch(`/riderData/rider-tables/${riderId}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(riderData),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log('Rider updated:', data);
+      // Redirect or refresh the rider list page
+      window.location.href = '/riderData';
+    })
+    .catch((error) => {
+      console.error('Error updating rider:', error);
+    });
+});
+
+     
   </script>
 
 </body>

@@ -4,8 +4,11 @@ const connectToDatabase = require('../config/dbconfig');
 
 
 router.use(express.json());
-router.post('/', async (req, res) => {
-    const { restaurantName, rating, review } = req.body;
+
+router.post('/:restaurantName/rating/:rating/review/:review', async (req, res) => {
+    const restaurantName = req.params.restaurantName;
+    const rating = req.params.rating;
+    const review = req.params.review;
     // console.log(req.body);
 
     try {
@@ -16,12 +19,14 @@ router.post('/', async (req, res) => {
         const restaurantID = restaurantQueryResult[0].RestaurantID;
         console.log(restaurantID);
 
-        // if (!restaurantQueryResult) {
-        //     return res.status(404).json({ success: false, message: "Restaurant not found." });
-        // }
+        if (!restaurantQueryResult) {
+            return res.status(404).json({ success: false, message: "Restaurant not found." });
+        }
 
-        // // Get CustomerID from username
+        // Get CustomerID from username
+        console.log(req.session.Name)
         const Name = req.session.Name;
+
         console.log(Name);
         const userQuery = `SELECT UserID FROM R_User WHERE Name = ?`;
         const userQueryResult = await connection.query(userQuery, [Name]);

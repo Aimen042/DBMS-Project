@@ -527,24 +527,21 @@ fetchReviews('Mc.Donalds');
     }
 
     // Prepare review data
-    const reviewData = {
-        restaurantName,
-        rating,
-        review,
-    };
+    
 
     // Send review data to backend
-    fetch('/addReview', {
+    fetch(`/addReview/${restaurantName}/rating/${rating}/review/${review}`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify(reviewData),
+        body: JSON.stringify(),
     })
         .then(response => response.json())
         .then(data => {
             if (data.success) {
                 alert("Review added successfully!");
+                fetchReviews('Mc.Donalds');
             } else {
                 alert("Failed to add review. Please try again.");
             }

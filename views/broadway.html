@@ -508,10 +508,10 @@
 
 fetchReviews('Broadway Pizza');
 
-        //adding a review
-        function addReview(button) {
-        const restaurantName = button.getAttribute('data-restaurant-name');
-
+//adding a review
+function addReview(button) {
+    const restaurantName = button.getAttribute('data-restaurant-name');
+    
     // Prompt user for rating and review
     const rating = parseFloat(prompt("Enter your rating (1-5):"));
     if (isNaN(rating) || rating < 1 || rating > 5) {
@@ -524,26 +524,22 @@ fetchReviews('Broadway Pizza');
         alert("Review is too long. Please keep it under 500 characters.");
         return;
     }
-
-    // Prepare review data
-    const reviewData = {
-        restaurantName,
-        rating,
-        review,
-    };
-
+    
+    
+    
     // Send review data to backend
-    fetch('/addReview', {
+    fetch(`/addReview/${restaurantName}/rating/${rating}/review/${review}`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify(reviewData),
+        body: JSON.stringify(),
     })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                alert("Review added successfully!");
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            alert("Review added successfully!");
+            fetchReviews('Broadway Pizza');
             } else {
                 alert("Failed to add review. Please try again.");
             }

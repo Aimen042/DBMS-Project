@@ -467,6 +467,7 @@
                 alert(`${item.name} added to cart!`);
             });
         });
+
         function fetchReviews(restaurantName) {
     //sendin req to the backend
     fetch(`/reviews/${restaurantName}`)
@@ -527,23 +528,24 @@ fetchReviews('OD');
 
     // Prepare review data
     const reviewData = {
-        restaurantName,
-        rating,
-        review,
+        RestaurantName:restaurantName,
+        Rating:rating,
+        Review:review,
     };
 
     // Send review data to backend
-    fetch('/addReview', {
+    fetch(`/addReview/${restaurantName}/rating/${rating}/review/${review}`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify(reviewData),
+        body: JSON.stringify({ }),
     })
         .then(response => response.json())
         .then(data => {
             if (data.success) {
                 alert("Review added successfully!");
+                fetchReviews('OD');
             } else {
                 alert("Failed to add review. Please try again.");
             }
@@ -552,7 +554,6 @@ fetchReviews('OD');
             console.error("Error:", error);
             alert("An error occurred. Please try again.");
         });
-        fetchReviews('OD');
 }
 
 

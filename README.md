@@ -4,6 +4,7 @@ With the rise of the online food delivery market, this system has a well-defined
 
 FEATURES:
 The Online Food Ordering System will include the following core features and services: 
+
 •	User Registration and Login System: Users will be able to create and log into accounts securely, providing details like name, address, and contact info. The login and registration processes will include basic encryption to ensure data security. Sessions will be managed using cookies or JWT tokens to maintain a secure and consistent user experience. 
 
 •	Menu Management: Restaurants will have access to a dashboard where they can update their menu, set pricing, and manage promotions. Each restaurant can add categories, individual menu items, descriptions, and images. This data will be stored in the DBMS and organized efficiently using indexing for quick retrieval.
